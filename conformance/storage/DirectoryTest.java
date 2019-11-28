@@ -3,6 +3,7 @@ package conformance.storage;
 import test.*;
 import common.*;
 import java.io.*;
+import java.util.Arrays;
 
 /** Tests storage server directory manipulation methods. 
 
@@ -262,6 +263,8 @@ public class DirectoryTest extends StorageTest
         // Repeat the same test with a directory.
         try
         {
+
+
             if(!command_stub.delete(new Path("/subdirectory")))
                 throw new TestFailed("unable to delete directory");
         }

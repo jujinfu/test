@@ -3,6 +3,7 @@ package conformance.storage;
 import test.*;
 import common.*;
 import java.io.*;
+import java.util.Arrays;
 
 /** Tests the storage server registration process.
  
@@ -33,8 +34,7 @@ public class RegistrationTest extends StorageTest
         super(new String[][] {new String[] {"subdirectory", "file1"},
                               new String[] {"subdirectory", "file2"},
                               new String[] {"file3"},
-                              new String[] {"subdirectory", "subdirectory2",
-                                            "file1"},
+                              new String[] {"subdirectory", "subdirectory2","file1"},
                               new String[] {"prune", "dir1", "file"},
                               new String[] {"prune", "dir2", "file"}},
               new Path[] {new Path("/subdirectory/file1"),
@@ -66,8 +66,7 @@ public class RegistrationTest extends StorageTest
         }
         catch(FileNotFoundException e)
         {
-            throw new TestFailed("cannot list storage server root directory",
-                                 e);
+            throw new TestFailed("cannot list storage server root directory",e);
         }
 
         if(!TestUtil.sameElements(listed, remaining_files))

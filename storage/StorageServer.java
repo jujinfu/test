@@ -6,9 +6,7 @@ import java.nio.file.DirectoryIteratorException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import common.*;
@@ -73,11 +71,13 @@ public class StorageServer implements Storage, Command
         List<java.nio.file.Path> paths = new ArrayList<java.nio.file.Path>();
         Path[] files = null;
         try {
-            Files.walk(Paths.get("/data"))
-                    .forEach(x->{ paths.add(x); });
+
+            paths.addAll(Files.find(Paths.get(root.getAbsolutePath()),Integer.MAX_VALUE,(filePath,fileAttr)->fileAttr.isRegularFile()).collect(Collectors.toList()));
+            //paths.addAll(Files.find(Paths.get(root.getAbsolutePath()),Integer.MAX_VALUE,(filePath,fileAttr)->fileAttr.isDirectory()).collect(Collectors.toList()));
+
             files = new Path[paths.size()];
             for (int i = 0; i < paths.size(); i++) {
-                files[i] = new Path(paths.get(i).toString());
+                files[i] = new Path(paths.get(i).toString().replace(root.getAbsolutePath(),"/"));
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -108,8 +108,7 @@ public class StorageServer implements Storage, Command
 
         // register using naming_server, client_stub, command_stub
         try {
-            Path[] filesToDelete = naming_server.register(client_stub,
-                    command_stub, files);
+            Path[] filesToDelete = naming_server.register(client_stub,command_stub, files);
             if (filesToDelete != null) {
                 for (Path file : filesToDelete) {
                     delete(file);
@@ -121,7 +120,7 @@ public class StorageServer implements Storage, Command
         }
         // Prune this storage server directories
 
-        pruneLocalStorage(Paths.get("/data"));
+        pruneLocalStorage(Paths.get(root.getAbsolutePath()));
 
     }
 
@@ -149,9 +148,15 @@ public class StorageServer implements Storage, Command
     @Override
     public synchronized long size(Path file) throws FileNotFoundException
     {
+        if(!file.toString().contains(root.getAbsolutePath()))
+            file=new Path(root.getAbsolutePath()+file.toString());
         File f = new File(file.toString());
         if (!f.exists()) {
-            throw new FileNotFoundException("not implemented");
+            throw new FileNotFoundException("Not Found");
+        }
+        if(Files.isDirectory(Paths.get(file.toString())))
+        {
+            throw new FileNotFoundException("Dir no size");
         }
         return f.length();
     }
@@ -160,6 +165,8 @@ public class StorageServer implements Storage, Command
     public synchronized byte[] read(Path file, long offset, int length)
         throws FileNotFoundException, IOException
     {
+        if(!file.toString().contains(root.getAbsolutePath()))
+            file=new Path(root.getAbsolutePath()+file.toString());
         File f = new File(file.toString());
         if (!f.exists()) {
             throw new FileNotFoundException("not implemented");
@@ -176,13 +183,27 @@ public class StorageServer implements Storage, Command
     public synchronized void write(Path file, long offset, byte[] data)
         throws FileNotFoundException, IOException
     {
+        if(data==null)
+            throw new NullPointerException("nothing to write");
+        if(offset<0)
+            throw new IndexOutOfBoundsException("offset out of bound");
+
+
+        if(!file.toString().contains(root.getAbsolutePath()))
+            file=new Path(root.getAbsolutePath()+file.toString());
+
         File f = new File(file.toString());
         if (!f.exists()) {
             throw new FileNotFoundException("not implemented");
         }
-        DataOutputStream out = new DataOutputStream(new FileOutputStream(f));
-        // REVISIT TYPE CAST
-        out.write(data, (int) offset, data.length);
+
+        DataOutputStream out = new DataOutputStream(new FileOutputStream(f,true));
+
+        if(offset>out.size()) {
+            long count = offset - out.size();
+            out.write(" ".getBytes());
+        }
+        out.write(data);
         out.flush();
         out.close();
     }
@@ -191,8 +212,16 @@ public class StorageServer implements Storage, Command
     @Override
     public synchronized boolean create(Path file)
     {
+        if(!file.toString().contains(root.getAbsolutePath()))
+            file=new Path(root.getAbsolutePath()+file.toString());
         java.nio.file.Path p = Paths.get(file.toString());
+
+        if(Files.exists(Paths.get(file.toString())))
+            return false;
+
         try {
+            Files.createDirectories(Paths.get(file.toString()).getParent());
+            Files.createFile(Paths.get(file.toString()));
             OutputStream out = Files.newOutputStream(p);
             out.close();
             return true;
@@ -207,7 +236,19 @@ public class StorageServer implements Storage, Command
     public synchronized boolean delete(Path path)
     {
         try {
-            Files.delete(Paths.get(path.toString()));
+            if(path.toString().equals("/"))
+                return false;
+
+            if(!path.toString().contains(root.getAbsolutePath()))
+                path=new Path(root.getAbsolutePath()+path.toString());
+            if(!Files.exists(Paths.get(path.toString())))
+                return false;
+            if(Files.isDirectory(Paths.get(path.toString()))) {
+                Iterator<java.nio.file.Path> it=Files.newDirectoryStream(Paths.get(path.toString())).iterator();
+                while(it.hasNext())
+                    delete(new Path(it.next().toString()));
+            }
+                Files.delete(Paths.get(path.toString()));
             return true;
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -217,9 +258,9 @@ public class StorageServer implements Storage, Command
     }
 
     private void pruneLocalStorage(java.nio.file.Path dir) {
-        try (DirectoryStream<java.nio.file.Path> stream = Files
-                .newDirectoryStream(dir)) {
-            System.out.println("Iterating : " + dir);
+        if(!Files.exists(dir))
+            return;
+        try (DirectoryStream<java.nio.file.Path> stream = Files.newDirectoryStream(dir)) {
             Iterator<java.nio.file.Path> it = stream.iterator();
             if (!it.hasNext()) {
                 // Directory is empty, delete it
@@ -227,12 +268,15 @@ public class StorageServer implements Storage, Command
                 currentDir.delete();
                 return;
             }
+
             while (it.hasNext()) {
                 java.nio.file.Path file = it.next();
                 if (Files.isDirectory(file)) {
                     pruneLocalStorage(file);
+                    pruneLocalStorage(file);
                 }
             }
+
         } catch (IOException | DirectoryIteratorException e) {
             System.err.println(e.getMessage());
             e.printStackTrace();
