@@ -64,8 +64,7 @@ abstract class NamingTest extends Test
         // Create the service interface stub.
         try
         {
-            InetSocketAddress   address =
-                new InetSocketAddress("127.0.0.1", NamingStubs.SERVICE_PORT);
+            InetSocketAddress   address = new InetSocketAddress("127.0.0.1", NamingStubs.SERVICE_PORT);
             service_stub = Stub.create(Service.class, address);
         }
         catch(Throwable t)
@@ -76,9 +75,7 @@ abstract class NamingTest extends Test
         // Create the registration interface stub.
         try
         {
-            InetSocketAddress   address =
-                new InetSocketAddress("127.0.0.1",
-                                      NamingStubs.REGISTRATION_PORT);
+            InetSocketAddress   address = new InetSocketAddress("127.0.0.1", NamingStubs.REGISTRATION_PORT);
             registration_stub = Stub.create(Registration.class, address);
         }
         catch(Throwable t)

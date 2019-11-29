@@ -83,6 +83,7 @@ public class StorageServer implements Storage, Command
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+
         // Initialize client and command stubs
         InetSocketAddress cmdAddr = new InetSocketAddress(hostname,StorageStubs.COMMAND_PORT);
         cmdSkeleton = new Skeleton<Command>(Command.class, this, cmdAddr);

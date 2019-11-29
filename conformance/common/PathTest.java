@@ -76,6 +76,7 @@ public class PathTest extends Test
                                            new Path("/file2"),
                                            new Path("/subdirectory/file3"),
                                            new Path("/subdirectory/file4")};
+
             if(!TestUtil.sameElements(listed, expected))
                 throw new TestFailed("directory listing incorrect");
         }

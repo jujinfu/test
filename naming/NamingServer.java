@@ -1,6 +1,8 @@
 package naming;
 
 import java.io.*;
+import java.net.InetSocketAddress;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.Map.Entry;
@@ -8,6 +10,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.stream.Collectors;
+
 import rmi.*;
 import common.*;
 import storage.*;
@@ -46,8 +50,10 @@ public class NamingServer implements Service, Registration
 
     String rootDirName = "data";
 
-    // Threads
-    NamingListener namingListeners;
+    Registration regStub;
+    Service servStub;
+    Skeleton<Registration> regSkeleton;
+    Skeleton<Service> servSkeleton;
 
     /** Creates the naming server object.
 
@@ -76,7 +82,32 @@ public class NamingServer implements Service, Registration
      */
     public synchronized void start() throws RMIException
     {
-        this.namingListeners = new NamingListener(this);
+        //this.namingListeners = new NamingListener(this);
+        String hostname = "127.0.0.1";
+
+        // Create registration stub
+        InetSocketAddress regAddr = new InetSocketAddress(hostname,NamingStubs.REGISTRATION_PORT);
+        regSkeleton = new Skeleton<Registration>(Registration.class,this, regAddr);
+        try {
+
+            regSkeleton.start();
+        } catch (RMIException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        regStub = NamingStubs.registration(hostname);
+
+        // Create service stub
+        InetSocketAddress servAddr = new InetSocketAddress(hostname,NamingStubs.SERVICE_PORT);
+        servSkeleton = new Skeleton<Service>(Service.class, this,servAddr);
+        try {
+            servSkeleton.start();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        servStub = NamingStubs.service(hostname);
+
     }
 
     /** Stops the naming server.
@@ -90,7 +121,11 @@ public class NamingServer implements Service, Registration
      */
     public void stop()
     {
-        this.namingListeners.stopListeners();
+        if(regSkeleton!=null)
+            regSkeleton.stop();
+        if(servSkeleton!=null)
+            servSkeleton.stop();
+        stopped(null);
     }
 
     /** Indicates that the server has completely shut down.
@@ -110,27 +145,25 @@ public class NamingServer implements Service, Registration
     @Override
     public boolean isDirectory(Path path) throws FileNotFoundException
     {
+        if(path==null)
+            throw new NullPointerException("path is null");
+        if(path.toString().equals("/"))
+            return true;
+
         java.nio.file.Path dir = Paths.get(path.toString());
 
-        // Validate root directory
-        if (!dir.getName(0).toString().equals(directoryTree.getName())) {
-            throw new FileNotFoundException("Invalid directory path");
-        }
-
         int length = dir.getNameCount();
-        if (length == 1) {
-            // Since length is 1, the directory is root directory
-            // Root directory is already validated above
-            return true;
-        }
 
         Hashtable<String, Directory> currentDirs = directoryTree.getSubDirs();
         for (int i = 0; i < length; i++) {
-
             if (!currentDirs.keySet().contains(dir.getName(i).toString())) {
-                if (i == length - 1) {
+                if (i == length ) {
                     return false;
                 } else {
+                    Directory d=currentDirs.get(dir.getName(i).toString());
+                    if(d.getFiles().contains(dir.getName(i).toString())){
+                        return false;
+                    }
                     throw new FileNotFoundException("Invalid directory path");
                 }
             }
@@ -143,15 +176,19 @@ public class NamingServer implements Service, Registration
     @Override
     public String[] list(Path directory) throws FileNotFoundException
     {
+        if(directory==null)
+            throw new NullPointerException("directory is null");
         java.nio.file.Path dir = Paths.get(directory.toString());
         HashSet<String> files = null;
+
+        String dirName=dir.toString().equals("/")?rootDirName:dir.getName(0).toString();
         // Validate root directory
-        if (!dir.getName(0).toString().equals(directoryTree.getName())) {
+        if (!dirName.equals(directoryTree.getName())) {
             throw new FileNotFoundException("Invalid directory path");
         }
 
         int length = dir.getNameCount();
-        if (length == 1) {
+        if (dir.toString().equals("/")) {
             // Since length is 1, the directory is root directory
             // Root directory is already validated above
             files = directoryTree.getFiles();
@@ -308,41 +345,86 @@ public class NamingServer implements Service, Registration
     @Override
     public Storage getStorage(Path file) throws FileNotFoundException
     {
-        if (!serverfiles.contains(file.toString())) {
+        boolean found=false;
+        Iterator<Path> it=serverfiles.iterator();
+        while(it.hasNext()){
+            Path i=it.next();
+            if(i.equals(file)){
+                found=true;
+                break;
+            }
+        }
+        if (!found) {
             throw new FileNotFoundException();
         }
-        return clientStubsForFile.get(file.toString())
-                .get(new Random().nextInt(storageServerStubs.size() - 0));
+        return clientStubsForFile.get(file.toString()).get(0);
     }
 
     // The method register is documented in Registration.java.
     @Override
-    public Path[] register(Storage client_stub, Command command_stub,
-                           Path[] files)
+    public Path[] register(Storage client_stub, Command command_stub, Path[] files)
     {
+        if(client_stub==null)
+            throw new NullPointerException("client stub null");
+        if(command_stub==null)
+            throw new NullPointerException("command stub null");
+        if(files==null)
+            throw new NullPointerException("files null");
+
+        Map<String, Object> stubs = new HashMap<String, Object>();
+        stubs.put("command_stub", command_stub);
+        stubs.put("client_stub", client_stub);
+
+        for (Map<String, Object> storageServerStub : storageServerStubs) {
+            if(storageServerStub.get("client_stub").equals(client_stub)
+                && storageServerStub.get("command_stub").equals(command_stub))
+                throw new IllegalStateException("server already registered");
+        }
+        //if(this.storageServerStubs.contains(stubs))
+        //  throw new IllegalStateException("server already registered");
+        storageServerStubs.add(stubs);
+        /*
         // Store the stubs for server
         try {
-            Map<String, Object> stubs = new HashMap<String, Object>();
-            stubs.put("command_stub", command_stub);
-            stubs.put("client_stub", client_stub);
             stubs.put("size", client_stub.size(new Path("/data")));
-            storageServerStubs.add(stubs);
+
         } catch (FileNotFoundException | RMIException e) {
             System.out.println("Registration failed : " + e.getMessage());
             e.printStackTrace();
         }
+        */
 
+        Set<Path> del=new HashSet<>();
+        Set<Path> add=new HashSet<>();
         // Add files to directory tree
         synchronized (serverfiles) {
-            serverfiles.addAll(Arrays.asList(files));
-            boolean addToTreeStatus = addFilesToDirectoryTree(serverfiles, client_stub, command_stub);
-            if (addToTreeStatus) {
-                // TODO : log files that should be deleted and returned on
-                // storage server
+            synchronized (directoryTree){
+                for(Path file2:files){
+                    if(file2.equals("/"))
+                        continue;
+                    if(serverfiles.contains(file2)){
+                        del.add(file2);
+                    }else {
+                        serverfiles.forEach(x -> {
+                            if (x.toString().startsWith(file2.toString())) {
+                                del.add(file2);
+                            }
+                        });
+                    }
+                }
             }
+            serverfiles.addAll(Arrays.asList(files).stream().filter(x->!x.equals("/")).collect(Collectors.toList()));
+
+            addFilesToDirectoryTree(serverfiles, client_stub, command_stub);
         }
-        return null;
+        Path[] result=new Path[del.size()];
+        for (int i = 0; i < result.length; i++) {
+            result[i]=del.stream().collect(Collectors.toList()).get(i);
+        }
+
+        return result;
     }
+
     public boolean addFilesToDirectoryTree(Set<Path> files, Storage client_stub,
                                            Command command_stub) {
         try {
@@ -487,18 +569,4 @@ public class NamingServer implements Service, Registration
         return null;
     }
 
-    private Directory getDirFromPath(Path path) throws FileNotFoundException {
-        java.nio.file.Path dir = Paths.get(path.toString());
-        int pathLength = dir.getNameCount();
-        Hashtable<String, Directory> currentDirs = directoryTree.getSubDirs();
-        for (int i = 0; i < pathLength; i++) {
-            if (i == pathLength - 1) {
-                return currentDirs.get(dir.getName(i).toString());
-            }
-
-            currentDirs = currentDirs.get(dir.getName(i).toString())
-                    .getSubDirs();
-        }
-        return null;
-    }
 }

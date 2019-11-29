@@ -103,8 +103,7 @@ public class ListingTest extends NamingTest
 
         // Go through all the expected children. For each child, ensure that the
         // isDirectory method returns the correct result.
-        for(int child_index = 0; child_index < expected_children.length;
-            ++child_index)
+        for(int child_index = 0; child_index < expected_children.length; ++child_index)
         {
             Path    child_path = new Path(path, expected_children[child_index]);
             boolean is_directory;

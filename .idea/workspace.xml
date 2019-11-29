@@ -2,109 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="548637e3-4eb5-40fc-91b5-f428ab0a6751" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Application.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/GeneralPath.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Launcher.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/NamingServerApp$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/NamingServerApp$StoppingNamingServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/NamingServerApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/ServerApplication$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/ServerApplication$BadUsageException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/ServerApplication$EOFThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/ServerApplication$TerminationTimeoutTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/ServerApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/StorageServerApp$StoppingStorageServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/StorageServerApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/PathSeparator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/DFSInputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/DFSOutputStream.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/Path$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/Path.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/SampleClassUnderTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/ConformanceTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/Path.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conformance/ConformanceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/ConformanceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/common/PathTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/ContactTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/CreationTest$CreationTestStorageServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/CreationTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/ListingTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest$TestNamingServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/RegistrationTest$UnsuccessfulStorageServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/RegistrationTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/StubRetrievalTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/TestStorageServer$CommandSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/TestStorageServer$StorageSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/TestStorageServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/BadInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ConnectionTest$TestSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ConnectionTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/SkeletonTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/SkeletonTest$BadInterfaceImplementation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/SkeletonTest$TestSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/SkeletonTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/StubTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/StubTest$ConnectionCheckThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/StubTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/TestInterface.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/TestServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ThreadTest$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ThreadTest$SecondThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ThreadTest$TestSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/rmi/ThreadTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/AccessTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/DirectoryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/DirectoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/storage/DirectoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/RegistrationTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/RegistrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/storage/RegistrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/StorageTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/TestNamingServer$TestSkeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/storage/TestNamingServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dfs.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/Directory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingStubs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/Registration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/RegistrationListener$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/RegistrationListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/Service.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/ListenThread$ClientThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/ListenThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/ProxyHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/RMIException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/Skeleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmi/Stub.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/Command.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/Storage.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/StorageServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conformance/common/PathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/common/PathTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conformance/naming/ListingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/ListingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/NamingTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naming/NamingListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/naming/NamingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/naming/NamingServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/naming/RegistrationListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/common/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/common/Path.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/ConformanceTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/ConformanceTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/common/PathTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/common/PathTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/ListingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/ListingTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/naming/RegistrationListener$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/naming/RegistrationListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/test/storage/StorageServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/storage/StorageServer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/StorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/storage/StorageServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/StorageStubs.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FailedDuringTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/FatalError.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/InfiniteLoopTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SelfTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series$CleanupThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series$CleanupTimeoutTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series$TestState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series$TestThread.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series$TestTimeoutTask.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Series.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SeriesReport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TemporaryDirectory$CleanupShutdownHook.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TemporaryDirectory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TemporaryDirectoryTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TestFailed.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TestReport.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/TestUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Timeout.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit/UnitTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/unit/common/SampleUnitTest.class" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -162,7 +81,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574968914957</updated>
-      <workItem from="1574968918334" duration="10760000" />
+      <workItem from="1574968918334" duration="28176000" />
     </task>
     <servers />
   </component>
@@ -184,19 +103,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/storage/RegistrationTest.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/conformance/storage/StorageTest.java</url>
           <line>56</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/storage/StorageTest.java</url>
-          <line>45</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/conformance/storage/RegistrationTest.java</url>
@@ -204,34 +113,39 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/storage/StorageServer.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="7" />
+          <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/test/Series.java</url>
-          <line>484</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
+          <line>152</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/storage/StorageTest.java</url>
-          <line>126</line>
-          <option name="timeStamp" value="9" />
+          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/storage/StorageServer.java</url>
-          <line>205</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
+          <line>112</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/storage/AccessTest.java</url>
-          <line>288</line>
-          <option name="timeStamp" value="26" />
+          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/storage/StorageServer.java</url>
-          <line>245</line>
-          <option name="timeStamp" value="28" />
+          <url>file://$PROJECT_DIR$/conformance/naming/StubRetrievalTest.java</url>
+          <line>77</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/conformance/naming/StubRetrievalTest.java</url>
+          <line>82</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

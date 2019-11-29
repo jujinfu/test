@@ -136,6 +136,7 @@ public class Path implements Iterable<String>, Serializable
             throw new IllegalArgumentException("parameter directory is not a directory");
         }
 
+        
         ArrayList<common.Path> ls=new ArrayList<>();
         try {
             Files.walk(Paths.get(directory.getPath()))
@@ -151,6 +152,7 @@ public class Path implements Iterable<String>, Serializable
             list[i]=ls.get(i);
         }
         return list;
+
     }
 
     /** Determines whether the path represents the root directory.
