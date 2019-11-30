@@ -154,21 +154,23 @@ public class NamingServer implements Service, Registration
 
         int length = dir.getNameCount();
 
-        Hashtable<String, Directory> currentDirs = directoryTree.getSubDirs();
-        for (int i = 0; i < length; i++) {
-            if (!currentDirs.keySet().contains(dir.getName(i).toString())) {
-                if (i == length ) {
-                    return false;
-                } else {
-                    Directory d=currentDirs.get(dir.getName(i).toString());
-                    if(d.getFiles().contains(dir.getName(i).toString())){
+        synchronized (directoryTree) {
+            Hashtable<String, Directory> currentDirs = directoryTree.getSubDirs();
+
+            for (int i = 0; i < length; i++) {
+                if (!currentDirs.keySet().contains(dir.getName(i).toString())) {
+                    if (directoryTree.getFiles().contains(dir.getName(i).toString())) {
                         return false;
                     }
-                    throw new FileNotFoundException("Invalid directory path");
+                    if (i == length-1 &&length!=1) {
+                        return false;
+                    } else {
+                        throw new FileNotFoundException("Invalid directory path");
+                    }
                 }
+                currentDirs = currentDirs.get(dir.getName(i).toString())
+                        .getSubDirs();
             }
-            currentDirs = currentDirs.get(dir.getName(i).toString())
-                    .getSubDirs();
         }
         return true;
     }
@@ -178,14 +180,15 @@ public class NamingServer implements Service, Registration
     {
         if(directory==null)
             throw new NullPointerException("directory is null");
+
         java.nio.file.Path dir = Paths.get(directory.toString());
         HashSet<String> files = null;
 
         String dirName=dir.toString().equals("/")?rootDirName:dir.getName(0).toString();
         // Validate root directory
-        if (!dirName.equals(directoryTree.getName())) {
-            throw new FileNotFoundException("Invalid directory path");
-        }
+        //if (!dirName.equals(directoryTree.getName())) {
+        //    throw new FileNotFoundException("Invalid directory path");
+        //}
 
         int length = dir.getNameCount();
         if (dir.toString().equals("/")) {
@@ -255,18 +258,34 @@ public class NamingServer implements Service, Registration
     public boolean createDirectory(Path directory) throws FileNotFoundException, RMIException {
         Command cmd_stub = null;
         Storage clnt_stub = null;
+        if(directory==null)
+            throw new NullPointerException("directory is null");
         synchronized (storageServerStubs) {
             java.nio.file.Path path = Paths.get(directory.toString());
-            if (!serverfiles
-                    .contains(path.subpath(0, path.getNameCount() - 1))) {
-                throw new FileNotFoundException(
+
+            java.nio.file.Path p=path.subpath(0, path.getNameCount()==1?1:path.getNameCount()-1);
+            if (!serverfiles.contains(p)) {
+                boolean found=false;
+                for (Path serverfile : serverfiles) {
+                    if(serverfile.toString().contains("/"+p.toString())){
+                       found=true;
+                       break;
+                    }
+                }
+                if(!found)
+                    throw new FileNotFoundException(
                         "Parent directory does not exist");
             }
+
             Long serverSize = 0L;
             Iterator<Map<String, Object>> iter = storageServerStubs.iterator();
             while (iter.hasNext()) {
                 Map<String, Object> currObj = (Map<String, Object>) iter.next();
                 Long currServerSize = (Long) currObj.get("size");
+                if(directory.toString().lastIndexOf('/')==0)
+                    currServerSize=1L;
+                if(currServerSize==null)
+                    throw new FileNotFoundException("parent is not dir");
                 if (currServerSize > serverSize) {
                     serverSize = (Long) currObj.get("size");
                     cmd_stub = (Command) currObj.get("command_stub");
@@ -274,6 +293,7 @@ public class NamingServer implements Service, Registration
                 }
             }
         }
+        
         boolean isDirCreated = cmd_stub.create(directory);
 
         if (isDirCreated) {
@@ -282,6 +302,7 @@ public class NamingServer implements Service, Registration
             serverfiles.add(directory);
             addDirectoriesToDirectoryTree(dirSet, clnt_stub, cmd_stub);
         }
+
         return isDirCreated;
     }
 

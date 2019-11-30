@@ -3,27 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="548637e3-4eb5-40fc-91b5-f428ab0a6751" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/ConformanceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/ConformanceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/common/PathTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/common/PathTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/ListingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/ListingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/NamingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingListener.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/naming/NamingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/naming/NamingServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/RegistrationListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/common/Path.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/common/Path.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/ConformanceTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/ConformanceTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/common/PathTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/common/PathTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/ListingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/ListingTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingListener.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/naming/RegistrationListener$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/naming/RegistrationListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/storage/StorageServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/storage/StorageServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/StorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/storage/StorageServer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574968914957</updated>
-      <workItem from="1574968918334" duration="28176000" />
+      <workItem from="1574968918334" duration="34713000" />
     </task>
     <servers />
   </component>
@@ -113,39 +94,24 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
-          <line>197</line>
-          <option name="timeStamp" value="45" />
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>389</line>
+          <option name="timeStamp" value="64" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>467</line>
+          <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>253</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
-          <line>152</line>
-          <option name="timeStamp" value="48" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
-          <line>112</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/ListingTest.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/StubRetrievalTest.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/StubRetrievalTest.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="56" />
+          <line>263</line>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
