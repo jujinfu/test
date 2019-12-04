@@ -256,13 +256,23 @@ public class NamingServer implements Service, Registration
 
     @Override
     public boolean createDirectory(Path directory) throws FileNotFoundException, RMIException {
-        Command cmd_stub = null;
-        Storage clnt_stub = null;
+        // check for null pointer
         if(directory==null)
             throw new NullPointerException("directory is null");
+
+        Command cmd_stub = null;
+        Storage clnt_stub = null;
+
         synchronized (storageServerStubs) {
             java.nio.file.Path path = Paths.get(directory.toString());
 
+            //check for existing dir
+            for(Path serverfile:serverfiles){
+                if(serverfile.toString().startsWith(directory.toString()))
+                    return false;
+            }
+
+            //check for parent not exists
             java.nio.file.Path p=path.subpath(0, path.getNameCount()==1?1:path.getNameCount()-1);
             if (!serverfiles.contains(p)) {
                 boolean found=false;
@@ -273,8 +283,7 @@ public class NamingServer implements Service, Registration
                     }
                 }
                 if(!found)
-                    throw new FileNotFoundException(
-                        "Parent directory does not exist");
+                    throw new FileNotFoundException("Parent directory does not exist");
             }
 
             Long serverSize = 0L;

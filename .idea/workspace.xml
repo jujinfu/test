@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="548637e3-4eb5-40fc-91b5-f428ab0a6751" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conformance/naming/CreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/CreationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/naming/NamingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/naming/NamingServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/StorageServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/storage/StorageServer.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,7 +64,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574968914957</updated>
-      <workItem from="1574968918334" duration="34713000" />
+      <workItem from="1574968918334" duration="34997000" />
+      <workItem from="1575486564478" duration="3501000" />
     </task>
     <servers />
   </component>
@@ -74,7 +77,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -95,23 +100,33 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
-          <line>389</line>
-          <option name="timeStamp" value="64" />
+          <line>79</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
-          <line>467</line>
-          <option name="timeStamp" value="65" />
+          <line>65</line>
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
-          <line>253</line>
-          <option name="timeStamp" value="66" />
+          <line>64</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
-          <line>263</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>201</line>
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

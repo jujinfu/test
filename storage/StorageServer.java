@@ -213,20 +213,20 @@ public class StorageServer implements Storage, Command
     @Override
     public synchronized boolean create(Path file)
     {
-        if(!file.toString().contains(root.getAbsolutePath()))
-            file=new Path(root.getAbsolutePath()+file.toString());
-        java.nio.file.Path p = Paths.get(file.toString());
-
-        if(Files.exists(Paths.get(file.toString())))
-            return false;
-
         try {
+            if(!file.toString().contains(root.getAbsolutePath()))
+                file=new Path(root.getAbsolutePath()+file.toString());
+            java.nio.file.Path p = Paths.get(file.toString());
+
+            if(Files.exists(Paths.get(file.toString())))
+                return false;
+
             Files.createDirectories(Paths.get(file.toString()).getParent());
             Files.createFile(Paths.get(file.toString()));
             OutputStream out = Files.newOutputStream(p);
             out.close();
             return true;
-        } catch (IOException e) {
+        }catch(IOException e){
             System.out.println(e.getMessage());
             e.printStackTrace();
             return false;

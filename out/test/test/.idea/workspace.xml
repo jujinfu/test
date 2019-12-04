@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="548637e3-4eb5-40fc-91b5-f428ab0a6751" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conformance/naming/NamingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/conformance/naming/NamingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/NamingServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/naming/NamingServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/naming/RegistrationListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest$TestNamingServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/conformance/naming/NamingTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingListener.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/test/naming/NamingServer.class" afterDir="false" />
-    </list>
+    <list default="true" id="548637e3-4eb5-40fc-91b5-f428ab0a6751" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574968914957</updated>
-      <workItem from="1574968918334" duration="14993000" />
+      <workItem from="1574968918334" duration="34997000" />
     </task>
     <servers />
   </component>
@@ -101,24 +90,24 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/RegistrationTest.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="31" />
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>389</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/RegistrationTest.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>467</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/RegistrationTest.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="33" />
+          <url>file://$PROJECT_DIR$/conformance/naming/CreationTest.java</url>
+          <line>253</line>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/conformance/naming/RegistrationTest.java</url>
-          <line>337</line>
-          <option name="timeStamp" value="36" />
+          <url>file://$PROJECT_DIR$/naming/NamingServer.java</url>
+          <line>263</line>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
